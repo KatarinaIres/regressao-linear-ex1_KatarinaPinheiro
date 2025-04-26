@@ -22,21 +22,23 @@ file_path = os.path.join(current_dir, 'Data', 'ex1data1.txt')
 
 print(f"🔹 Carregando dados de treinamento de {file_path}...")
 data = np.loadtxt(file_path, delimiter=',')
-X = data[:, 0]
+X_original = data[:, 0]   # Salva X original
 y = data[:, 1]
-m = len(y)  # número de exemplos de treinamento
+m = len(y)
 
 # 4. Visualizar os dados
 plt.figure()
-plot_data(X, y)
-plt.title('Dados de treinamento')
+plot_data(X_original, y, color='blue', marker='o', label='Dados de treinamento')
+plt.title('Dados de Treinamento')
 plt.xlabel('População da cidade')
 plt.ylabel('Lucro')
+plt.legend()
+plt.grid(True)
 plt.savefig('Figures/dados_treinamento.png')
 plt.close()
 
-# 5. Preparar os dados
-X = X.reshape((m, 1))
+# 5. Preparar os dados para treinamento
+X = X_original.reshape((m, 1))
 X = np.concatenate([np.ones((m, 1)), X], axis=1)  # Adiciona coluna de 1's
 theta = np.zeros(2)  # Inicializa theta
 
@@ -55,22 +57,22 @@ print("\n==============================\n")
 
 # 9. Plotar a linha de regressão
 plt.figure()
-plot_data(X[:, 1], y)  # <- Repare que agora é X[:, 1] (e não X direto!)
-plt.plot(X[:, 1], np.dot(X, theta), color='red', label='Regressão Linear')
+plot_data(X_original, y, color='blue', marker='o', label='Dados de treinamento')
+plt.plot(X_original, np.dot(X, theta), color='red', label='Regressão Linear')
 plt.title('Ajuste Linear aos Dados')
 plt.xlabel('População da cidade')
 plt.ylabel('Lucro')
 plt.legend()
+plt.grid(True)
 plt.savefig('Figures/ajuste_regressao.png')
 plt.close()
 
 # 10. Plotar o custo vs. iterações
 plt.figure()
-plt.plot(range(1, iterations + 1), J_history, color='blue')
-plt.title('Convergência do custo')
+plt.plot(range(1, iterations + 1), J_history, color='purple')
+plt.title('Convergência do Custo')
 plt.xlabel('Número de Iterações')
 plt.ylabel('Custo J(θ)')
 plt.grid(True)
 plt.savefig('Figures/convergencia_custo.png')
 plt.close()
-
