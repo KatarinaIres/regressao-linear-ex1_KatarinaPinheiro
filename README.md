@@ -6,7 +6,6 @@
 
 ---
 
-
 ## Universidade Federal do Maranhão
 ### Engenharia da Computação
 ### Disciplina: EECP0053 - TÓPICOS EM ENGENHARIA DA COMPUTAÇÃO II - FUNDAMENTOS DE REDES NEURAIS
