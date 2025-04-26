@@ -73,3 +73,4 @@ plt.ylabel('Custo J(θ)')
 plt.grid(True)
 plt.savefig('Figures/convergencia_custo.png')
 plt.close()
+
