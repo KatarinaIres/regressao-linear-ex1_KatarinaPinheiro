@@ -1,5 +1,5 @@
 import numpy as np
-from compute_cost import compute_cost
+from Functions.compute_cost import compute_cost
 
 def gradient_descent(X, y, theta, alpha, num_iters):
     m = len(y)

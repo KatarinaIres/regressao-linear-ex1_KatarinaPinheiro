@@ -51,7 +51,7 @@ initial_cost = compute_cost(X, y, theta)
 print(f"🔹 Custo inicial com theta zeros: {initial_cost:.4f}")
 
 # 8. Rodar descida do gradiente
-theta, J_history = gradient_descent(X, y, theta, alpha, iterations)
+theta, J_history, theta_history = gradient_descent(X, y, theta, alpha, iterations)
 print(f"🔹 Theta encontrado: {theta}")
 print("\n==============================\n")
 
@@ -76,3 +76,8 @@ plt.ylabel('Custo J(θ)')
 plt.grid(True)
 plt.savefig('Figures/convergencia_custo.png')
 plt.close()
+
+# 11. Gerar animação da descida do gradiente
+from Functions.plot_cost_surface import animate_gradient_descent
+
+animate_gradient_descent(X, y, theta_history)
